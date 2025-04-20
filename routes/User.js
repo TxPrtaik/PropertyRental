@@ -213,8 +213,8 @@ async function checkRentalStatus(){
     for(let p of props){
 let rents=await rent.findOne({pid:p._id});
 if(p.user!=null){
-    let start=new Date(i.startDate).getTime();
-    let end=new Date(i.endDate).getTime();
+    let start=new Date(rents.startDate).getTime();
+    let end=new Date(rents.endDate).getTime();
   let cur=new Date().getTime();
   if(cur>=start&&cur<=end){
    await rent.findById(rents._id).updateOne({"isActive":true})
